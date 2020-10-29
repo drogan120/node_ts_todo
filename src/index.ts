@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import compression from 'compression'
 import helmet from 'helmet'
 import cors from 'cors'
-import { user } from './routes'
+import { auth, user } from './routes'
 class App {
 
     public app: Application
@@ -24,6 +24,7 @@ class App {
     }
 
     protected routes(): void {
+        this.app.use('/auth', auth)
         this.app.use('/users', user)
     }
 }
