@@ -1,7 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express'
 import RouterInterface from './routerInterface'
 
-class user implements RouterInterface {
+// Controller
+import UserController from '../controllers/UserController'
+class User implements RouterInterface {
 
     public router: Router
 
@@ -12,15 +14,13 @@ class user implements RouterInterface {
 
     public routes(): void {
 
-        this.router.get('/', (req: Request, res: Response) => {
-            res.send('oke')
-        })
-
-        this.router.post('/', (req: Request, res: Response) => {
-            res.send(req.body)
-        })
+        this.router.get('/', UserController.index)
+        this.router.post('/', UserController.create)
+        this.router.get('/:id', UserController.show)
+        this.router.put('/:id', UserController.update)
+        this.router.delete('/:id', UserController.destroy)
 
     }
 }
 
-export default new user().router
+export default new User().router
