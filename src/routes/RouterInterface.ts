@@ -1,5 +1,5 @@
-interface RouterInterface {
+interface RoutersInterface {
     routes(): void;
 }
 
-export default RouterInterface
+export default RoutersInterface

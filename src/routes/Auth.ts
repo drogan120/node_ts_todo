@@ -1,17 +1,9 @@
-import { Router } from 'express'
-import RouterInterface from './routerInterface';
+import BaseRoutes from './BaseRoutes'
 
 // Controllers
 import AuthController from '../controllers/AuthController'
 
-class Auth implements RouterInterface {
-
-    public router: Router
-
-    constructor() {
-        this.router = Router()
-        this.routes()
-    }
+class Auth extends BaseRoutes {
 
     public routes(): void {
         this.router.get('/', AuthController.index)
@@ -21,7 +13,6 @@ class Auth implements RouterInterface {
         this.router.delete('/:id', AuthController.destroy)
 
     }
-
 }
 
 export default new Auth().router
