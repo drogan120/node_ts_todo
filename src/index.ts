@@ -4,6 +4,9 @@ import morgan from 'morgan'
 import compression from 'compression'
 import helmet from 'helmet'
 import cors from 'cors'
+import dotEnv from 'dotenv'
+
+// Routes
 import { auth, user } from './routes'
 class App {
 
@@ -14,6 +17,7 @@ class App {
         this.app.use(bodyParser.json())
         this.routes()
         this.plugins()
+        dotEnv.config()
     }
 
     protected plugins() {
@@ -29,7 +33,7 @@ class App {
     }
 }
 
-const PORT: number = 3000
+const PORT: String = process.env.APP_PORT || '3000'
 const app = new App().app
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)

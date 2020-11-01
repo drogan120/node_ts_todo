@@ -1,0 +1,7 @@
+NODE_ENV = development
+APP_PORT = 3000
+DB_HOST = localhost
+DB_PORT = 3306
+DB_USER = root
+DB_NAME= node_todo
+DB_PASSWORD = password
