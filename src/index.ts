@@ -28,8 +28,8 @@ class App {
     }
 
     protected routes(): void {
-        this.app.use('/auth', auth)
-        this.app.use('/users', user)
+        this.app.use('/api/v1/auth', auth)
+        this.app.use('/api/v1/users', user)
     }
 }
 
