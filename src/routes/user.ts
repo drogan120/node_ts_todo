@@ -1,5 +1,5 @@
 import BaseRoutes from './BaseRoutes'
-import { auth } from '../middlewares/AuthMiddleware'
+import { auth } from '../middlewares'
 
 // Controller
 import UserController from '../controllers/UserController'
