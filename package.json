@@ -16,6 +16,7 @@
     "@types/express-session": "^1.17.0",
     "@types/express-validator": "^3.0.0",
     "@types/helmet": "^4.0.0",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.7.36",
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.6",
@@ -43,6 +44,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.6.1",
     "helmet": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   }

@@ -1,1 +1,1 @@
-export { default as passwordHash } from './PassswordHash'
+export { default as Authentication } from './Authentication'
