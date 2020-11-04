@@ -3,7 +3,7 @@ import { validate, auth } from '../middlewares/'
 
 
 // Controllers
-import AuthController from '../controllers/AuthController'
+import { AuthController } from '../controllers'
 
 
 class Auth extends BaseRoutes {

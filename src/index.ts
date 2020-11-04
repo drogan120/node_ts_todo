@@ -7,7 +7,7 @@ import cors from 'cors'
 import dotEnv from 'dotenv'
 
 // Routes
-import { auth, user } from './routes'
+import { todos, auth, user } from './routes'
 class App {
 
     public app: Application
@@ -30,6 +30,7 @@ class App {
     protected routes(): void {
         this.app.use('/api/v1/auth', auth)
         this.app.use('/api/v1/users', user)
+        this.app.use('/api/v1/todos', todos)
     }
 }
 
