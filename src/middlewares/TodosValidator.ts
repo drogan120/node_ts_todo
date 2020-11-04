@@ -1,9 +1,8 @@
-import { Request, Response, NextFunction, request } from 'express'
+import { Request, Response, NextFunction } from 'express'
 import { validationResult, check } from 'express-validator'
 
 const validate = [
-    check('username').isString(),
-    check('password').isLength({ min: 6 }),
+    check('descriptions').isString(),
     (req: Request, res: Response, next: NextFunction) => {
         const error = validationResult(req)
 
