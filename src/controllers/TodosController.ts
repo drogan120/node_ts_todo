@@ -3,8 +3,13 @@ import ControllerInterface from './ControllersInterface'
 const db = require('../db/models')
 
 class TodosController implements ControllerInterface {
-    index(req: Request, res: Response): Response {
-        return res.send('index todos')
+    index = async (req: Request, res: Response): Promise<Response> => {
+        const { id } = req.app.locals.credential
+
+        const todos = await db.todo.findAll({ where: { user_id: id }, attributes: ['id', 'description'] })
+        return res.send({
+            data: todos
+        })
     }
     create = async (req: Request, res: Response): Promise<Response> => {
         const { id } = req.app.locals.credential
@@ -19,17 +24,43 @@ class TodosController implements ControllerInterface {
             messages: "todo has been created"
         })
     }
-    show(req: Request, res: Response): Response {
-        return res.send('show todos')
+    show = async (req: Request, res: Response): Promise<Response> => {
+        const { id: user_id } = req.app.locals.credential
+        const { id } = req.params
+
+        const todos = await db.todo.findOne({ where: { id, user_id }, attributes: ['id', 'description'] })
+        return res.send({
+            data: todos
+        })
 
     }
-    update(req: Request, res: Response): Response {
-        return res.send('update todos')
+    update = async (req: Request, res: Response): Promise<Response> => {
+        const { id: user_id } = req.app.locals.credential
+        const { id } = req.params
+        const { descriptions } = req.body
+
+        const todo = await db.todo.update(
+            {
+                description: descriptions
+            },
+            {
+                where: { id, user_id }
+            }
+        )
+        return res.send({
+            data: todo,
+            messages: "todo has been updated"
+        })
     }
-    destroy(req: Request, res: Response): Response {
+    destroy = async (req: Request, res: Response): Promise<Response> => {
 
-        return res.send('hapus todos')
-
+        const { id: user_id } = req.app.locals.credential
+        const { id } = req.params
+        const todo = await db.todo.destroy({ where: { id, user_id } })
+        return res.send({
+            data: todo,
+            messages: "todo has been deleted"
+        })
     }
 
 }
